@@ -1,2 +1,2 @@
-:HL["/CRM-Pro-Frontend/_next/static/chunks/b4e85a091345711b.css","style"]
-0:{"buildId":"eu9TcP-rYXZetjmkl1sVe","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+:HL["/CRM-Pro-Frontend/_next/static/chunks/b649f7a4d6fa806c.css","style"]
+0:{"buildId":"aWsth7lzvEb__Bx6yiUm4","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
