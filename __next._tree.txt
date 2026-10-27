@@ -1,2 +1,2 @@
 :HL["/CRM-Pro-Frontend/_next/static/chunks/6cc548667fbbc8fc.css","style"]
-0:{"buildId":"NYx2Gc3rXmjSg4PEwPmAV","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
+0:{"buildId":"Mv-d4kg5Mc0mNeXnTC4Sr","tree":{"name":"","paramType":null,"paramKey":"","hasRuntimePrefetch":false,"slots":{"children":{"name":"__PAGE__","paramType":null,"paramKey":"__PAGE__","hasRuntimePrefetch":false,"slots":null,"isRootLayout":false}},"isRootLayout":true},"staleTime":300}
