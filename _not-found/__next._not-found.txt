@@ -1,4 +1,4 @@
 1:"$Sreact.fragment"
 2:I[39756,["/CRM-Pro-Frontend/_next/static/chunks/e87927029a9903ed.js","/CRM-Pro-Frontend/_next/static/chunks/d0cb4c3020a769aa.js","/CRM-Pro-Frontend/_next/static/chunks/74f1b9da08b28ae5.js"],"default"]
 3:I[37457,["/CRM-Pro-Frontend/_next/static/chunks/e87927029a9903ed.js","/CRM-Pro-Frontend/_next/static/chunks/d0cb4c3020a769aa.js","/CRM-Pro-Frontend/_next/static/chunks/74f1b9da08b28ae5.js"],"default"]
-0:{"buildId":"2P1Li2j141083g3AhuhCN","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
+0:{"buildId":"_TuRFKuNzSwp0qZuSTQfE","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","template":["$","$L3",null,{}]}]]}],"loading":null,"isPartial":false}
