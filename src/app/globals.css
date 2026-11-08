@@ -1,0 +1,2737 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ---------- Vazirmatn Persian Font ----------
+   تسک ۵۶: مسیر اول مخصوص GitHub Pages (basePath) — مسیر دوم برای اجرای محلی؛
+   مرورگر اگر اولی را پیدا نکرد خودش دومی را لود می‌کند */
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/CRM-Pro-Frontend/fonts/Vazirmatn-Regular.woff2") format("woff2"),
+    url("/fonts/Vazirmatn-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/CRM-Pro-Frontend/fonts/Vazirmatn-Medium.woff2") format("woff2"),
+    url("/fonts/Vazirmatn-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/CRM-Pro-Frontend/fonts/Vazirmatn-SemiBold.woff2") format("woff2"),
+    url("/fonts/Vazirmatn-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  src: url("/CRM-Pro-Frontend/fonts/Vazirmatn-Bold.woff2") format("woff2"),
+    url("/fonts/Vazirmatn-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ---------- فونت نمایشی Lalezar — تیترهای خفن صفحه‌ی لاگین (تسک ۵۶) ----------
+   دو زیرمجموعه: عربی/فارسی + لاتین (برای «CRM Pro»)؛ هرکدام با unicode-range */
+@font-face {
+  font-family: "Lalezar";
+  src: url("/CRM-Pro-Frontend/fonts/Lalezar-Regular.woff2") format("woff2"),
+    url("/fonts/Lalezar-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF,
+    U+FE70-FEFF, U+200C-200F;
+}
+@font-face {
+  font-family: "Lalezar";
+  src: url("/CRM-Pro-Frontend/fonts/Lalezar-Latin.woff2") format("woff2"),
+    url("/fonts/Lalezar-Latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191,
+    U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, monospace;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: oklch(0.985 0.005 160);
+  --foreground: oklch(0.19 0.02 240);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.19 0.02 240);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.19 0.02 240);
+  --primary: oklch(0.55 0.13 175);
+  --primary-foreground: oklch(0.99 0.005 160);
+  --secondary: oklch(0.955 0.01 160);
+  --secondary-foreground: oklch(0.25 0.02 240);
+  --muted: oklch(0.955 0.008 160);
+  --muted-foreground: oklch(0.5 0.015 240);
+  --accent: oklch(0.94 0.03 175);
+  --accent-foreground: oklch(0.3 0.05 175);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.91 0.008 160);
+  --input: oklch(0.91 0.008 160);
+  --ring: oklch(0.55 0.13 175);
+  --chart-1: oklch(0.55 0.13 175);
+  --chart-2: oklch(0.6 0.17 305);
+  --chart-3: oklch(0.75 0.15 80);
+  --chart-4: oklch(0.62 0.19 25);
+  --chart-5: oklch(0.68 0.13 200);
+  --sidebar: oklch(0.235 0.03 240);
+  --sidebar-foreground: oklch(0.93 0.01 160);
+  --sidebar-primary: oklch(0.72 0.14 175);
+  --sidebar-primary-foreground: oklch(0.15 0.03 240);
+  --sidebar-accent: oklch(0.3 0.03 240);
+  --sidebar-accent-foreground: oklch(0.93 0.01 160);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.72 0.14 175);
+}
+
+.dark {
+  --background: oklch(0.17 0.02 250);
+  --foreground: oklch(0.95 0.01 160);
+  --card: oklch(0.22 0.025 250);
+  --card-foreground: oklch(0.95 0.01 160);
+  --popover: oklch(0.22 0.025 250);
+  --popover-foreground: oklch(0.95 0.01 160);
+  --primary: oklch(0.72 0.14 175);
+  --primary-foreground: oklch(0.17 0.03 240);
+  --secondary: oklch(0.28 0.025 250);
+  --secondary-foreground: oklch(0.95 0.01 160);
+  --muted: oklch(0.28 0.025 250);
+  --muted-foreground: oklch(0.68 0.02 240);
+  --accent: oklch(0.3 0.04 175);
+  --accent-foreground: oklch(0.9 0.05 175);
+  --destructive: oklch(0.65 0.2 25);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.72 0.14 175);
+  --chart-1: oklch(0.72 0.14 175);
+  --chart-2: oklch(0.7 0.16 305);
+  --chart-3: oklch(0.78 0.15 80);
+  --chart-4: oklch(0.68 0.19 25);
+  --chart-5: oklch(0.72 0.12 200);
+  --sidebar: oklch(0.2 0.025 250);
+  --sidebar-foreground: oklch(0.93 0.01 160);
+  --sidebar-primary: oklch(0.72 0.14 175);
+  --sidebar-primary-foreground: oklch(0.17 0.03 240);
+  --sidebar-accent: oklch(0.28 0.03 250);
+  --sidebar-accent-foreground: oklch(0.93 0.01 160);
+  --sidebar-border: oklch(1 0 0 / 8%);
+  --sidebar-ring: oklch(0.72 0.14 175);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    direction: rtl;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+}
+
+/* ---------- Custom Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.7 0.02 240 / 35%);
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.6 0.04 175 / 60%);
+}
+
+/* ---------- Recharts RTL helpers ---------- */
+.recharts-wrapper {
+  direction: ltr;
+}
+.recharts-text .recharts-cartesian-axis-tick-value {
+  font-family: "Vazirmatn", sans-serif;
+}
+
+/* ---------- Subtle entrance animation ---------- */
+@keyframes crm-fade-up {
+  from {
+    opacity: 0;
+    /* ورود سه‌بعدی صفحه — از حالت خوابیده با تیلت بلند می‌شود (تسک ۵۱) */
+    transform: perspective(1000px) rotateX(-6deg) translateY(16px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(1000px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+.crm-fade-up {
+  animation: crm-fade-up 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.08) both;
+}
+
+/* ---------- Login error shake ---------- */
+@keyframes crm-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+.crm-shake {
+  animation: crm-shake 0.4s ease-in-out both;
+}
+
+/* Kanban drag feedback */
+.kanban-card-dragging {
+  opacity: 0.4;
+}
+.kanban-column-drop {
+  outline: 2px dashed oklch(0.72 0.14 175 / 60%);
+  outline-offset: -6px;
+  border-radius: var(--radius-lg);
+  background: oklch(0.72 0.14 175 / 6%);
+}
+
+/* ---------- تسک ۴۸: نوبار سه‌بعدی — دکمه‌های کی‌کپ + زیرمنوی هاوری ---------- */
+/* دکمه‌های سطح بالا: برجسته مثل کلید فیزیکی؛ هاور بلند می‌شود، کلیک فرو می‌رود */
+.nav3d-btn {
+  transform: translateY(0);
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 20%),
+    0 6px 12px -6px oklch(0.2 0.02 240 / 35%);
+}
+.nav3d-btn:hover {
+  /* تیلت سه‌بعدی واقعی (عمق از perspective داک/سلول) + بلند شدن */
+  transform: rotateX(12deg) translateY(-2px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 4px 0 0 oklch(0.55 0.13 175 / 22%),
+    0 12px 20px -8px oklch(0.2 0.02 240 / 40%);
+}
+.nav3d-btn:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 40%),
+    0 1px 0 0 oklch(0.55 0.13 175 / 20%),
+    0 3px 6px -4px oklch(0.2 0.02 240 / 35%);
+}
+.dark .nav3d-btn {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 8%),
+    0 2px 0 0 rgb(0 0 0 / 35%),
+    0 8px 14px -6px rgb(0 0 0 / 60%);
+}
+.dark .nav3d-btn:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 4px 0 0 rgb(0 0 0 / 40%),
+    0 14px 22px -8px rgb(0 0 0 / 70%);
+}
+
+/* دکمه‌ی بخش جاری — کی‌کپ فیروزه‌ای برجسته */
+.nav3d-btn-active,
+.dark .nav3d-btn-active {
+  color: oklch(0.99 0.005 160);
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.72 0.14 175),
+    oklch(0.58 0.12 172)
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 35%),
+    0 3px 0 0 oklch(0.42 0.09 175 / 95%),
+    0 10px 18px -6px oklch(0.72 0.14 175 / 55%);
+}
+.nav3d-btn-active:hover,
+.dark .nav3d-btn-active:hover {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.76 0.14 175),
+    oklch(0.6 0.12 172)
+  );
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 40%),
+    0 4px 0 0 oklch(0.42 0.09 175 / 95%),
+    0 14px 24px -8px oklch(0.72 0.14 175 / 60%);
+}
+.nav3d-btn-active:active,
+.dark .nav3d-btn-active:active {
+  transform: translateY(1px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 25%),
+    0 1px 0 0 oklch(0.42 0.09 175 / 95%),
+    0 5px 10px -6px oklch(0.72 0.14 175 / 45%);
+}
+
+/* پنل زیرمنو — باز شدن سه‌بعدی (تا خوردن از لبه‌ی نوبار مثل درب) */
+.nav3d-panel {
+  transform-origin: top center;
+  animation: nav3d-unfold 0.26s cubic-bezier(0.2, 0.85, 0.3, 1.15) both;
+  box-shadow:
+    0 24px 48px -16px oklch(0.2 0.02 240 / 35%),
+    0 8px 16px -8px oklch(0.2 0.02 240 / 25%);
+}
+@keyframes nav3d-unfold {
+  from {
+    opacity: 0;
+    transform: perspective(700px) rotateX(-30deg) translateY(-10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(700px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+/* آیتم‌های زیرمنو — ورود پلکانی + حرکت سه‌بعدی در هاوری
+   (انحراف هاوری با transform است و انیمیشن ورود با translate تا تداخل نکنند) */
+.nav3d-item {
+  animation: nav3d-item-in 0.32s cubic-bezier(0.2, 0.7, 0.3, 1.1) both;
+  transition:
+    transform 0.15s ease,
+    background-color 0.15s ease;
+}
+.nav3d-item:hover {
+  transform: translateX(-3px);
+}
+@keyframes nav3d-item-in {
+  from {
+    opacity: 0;
+    translate: 0 -8px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.nav3d-panel > .nav3d-item:nth-child(2) {
+  animation-delay: 40ms;
+}
+.nav3d-panel > .nav3d-item:nth-child(3) {
+  animation-delay: 80ms;
+}
+.nav3d-panel > .nav3d-item:nth-child(4) {
+  animation-delay: 120ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav3d-panel,
+  .nav3d-item {
+    animation: none;
+  }
+  .nav3d-btn,
+  .nav3d-item {
+    transition: none;
+  }
+  .nav3d-item:hover {
+    transform: none;
+  }
+}
+
+/* ---------- تسک ۴۹: داک شیشه‌ای وسط‌چین + درخشش‌ها ---------- */
+/* داک شناور وسط نوبار — کنسول شیشه‌ای با قاب گرادیانی جاری (تسک ۵۰ قاب را متحرک کرد) */
+.nav3d-dock {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.375rem;
+  border-radius: 1.15rem;
+  border: 1px solid transparent;
+  position: relative;
+  z-index: 1;
+  /* عمق سه‌بعدی برای فلیپ ورودی و تیلت هاورِ دکمه‌های مستقیم */
+  perspective: 600px;
+  background:
+    linear-gradient(
+      to bottom,
+      oklch(1 0 0 / 78%),
+      oklch(0.955 0.008 160 / 52%)
+    ) padding-box,
+    linear-gradient(
+      110deg,
+      oklch(0.72 0.14 175 / 80%),
+      oklch(0.65 0.19 300 / 80%),
+      oklch(0.78 0.13 200 / 80%),
+      oklch(0.72 0.14 175 / 80%)
+    ) border-box;
+  background-size: auto, 320% 320%;
+  animation:
+    nav3d-float 7s ease-in-out infinite,
+    nav3d-flow 9s linear infinite;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 50%),
+    0 2px 0 -1px oklch(0.55 0.13 175 / 12%),
+    0 14px 30px -14px oklch(0.2 0.02 240 / 45%);
+}
+.dark .nav3d-dock {
+  background:
+    linear-gradient(
+      to bottom,
+      oklch(0.27 0.02 250 / 80%),
+      oklch(0.21 0.02 250 / 60%)
+    ) padding-box,
+    linear-gradient(
+      110deg,
+      oklch(0.75 0.15 175 / 90%),
+      oklch(0.68 0.2 300 / 90%),
+      oklch(0.8 0.14 200 / 90%),
+      oklch(0.75 0.15 175 / 90%)
+    ) border-box;
+  background-size: auto, 320% 320%;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 9%),
+    0 16px 32px -14px rgb(0 0 0 / 75%);
+}
+/* شناوری آرام داک + جریان رنگ قاب (با translate جدا از transform) */
+@keyframes nav3d-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+  50% {
+    translate: 0 -2.5px;
+  }
+}
+@keyframes nav3d-flow {
+  0% {
+    background-position: 0 0, 0% 50%;
+  }
+  50% {
+    background-position: 0 0, 100% 50%;
+  }
+  100% {
+    background-position: 0 0, 0% 50%;
+  }
+}
+
+/* درخشش عبوری (شاین) روی دکمه‌ها موقع هاور — به‌جز کی‌کپ فعال */
+.nav3d-btn {
+  position: relative;
+  overflow: hidden;
+}
+.nav3d-btn:not(.nav3d-btn-active)::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgb(255 255 255 / 30%) 50%,
+    transparent 70%
+  );
+  transform: translateX(170%);
+  transition: transform 0.55s ease;
+}
+.nav3d-btn:not(.nav3d-btn-active):hover::after {
+  transform: translateX(-170%);
+}
+
+/* تنفس نور فیروزه‌ای دور کی‌کپ فعال — با filter تا هاورِ box-shadow مختل نشود
+   (قانون انیمیشن به تسک ۵۰ منتقل شد: pop + breathe با هم) */
+@keyframes nav3d-breathe {
+  0%,
+  100% {
+    filter: drop-shadow(0 5px 8px oklch(0.72 0.14 175 / 30%));
+  }
+  50% {
+    filter: drop-shadow(0 7px 16px oklch(0.72 0.14 175 / 55%));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav3d-btn-active {
+    animation: none;
+  }
+  .nav3d-btn::after {
+    display: none;
+  }
+}
+
+/* ---------- تسک ۵۰: «خیلی خفن‌تر» — شفق قطبی، تیلت سه‌بعدی، ورود آبشاری، خط نوری مسافر ---------- */
+
+/* شفق قطبی پشت داک — دو هاله‌ی رنگی محو که آرام شنا می‌کنند (زیر داک، بی‌اثر روی ماوس) */
+.nav3d-row {
+  position: relative;
+}
+.nav3d-row::before,
+.nav3d-row::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  width: 280px;
+  height: 84px;
+  border-radius: 9999px;
+  filter: blur(26px);
+}
+.nav3d-row::before {
+  right: 16%;
+  top: 10px;
+  background: oklch(0.72 0.14 175 / 40%);
+  animation: nav3d-aurora-a 9s ease-in-out infinite alternate;
+}
+.nav3d-row::after {
+  left: 14%;
+  top: 16px;
+  background: oklch(0.65 0.19 300 / 34%);
+  animation: nav3d-aurora-b 11s ease-in-out infinite alternate;
+}
+.dark .nav3d-row::before {
+  background: oklch(0.72 0.14 175 / 48%);
+}
+.dark .nav3d-row::after {
+  background: oklch(0.65 0.19 300 / 44%);
+}
+@keyframes nav3d-aurora-a {
+  from {
+    transform: translateX(0) scale(1);
+  }
+  to {
+    transform: translateX(64px) scale(1.18);
+  }
+}
+@keyframes nav3d-aurora-b {
+  from {
+    transform: translateX(0) scale(1.12);
+  }
+  to {
+    transform: translateX(-72px) scale(0.94);
+  }
+}
+
+/* عمق سه‌بعدی برای تیلت هاورِ دکمه‌ی گروهی (چندلایه، مستقیم داخل سلول نیست) */
+.nav3d-cell {
+  perspective: 600px;
+}
+
+/* ورود آبشاری دکمه‌ها هنگام لود — فلیپ سه‌بعدی پلکانی
+   (انیمیشن با translate/rotate جدا از transform تا هاور خراب نشود؛
+   مرورگر بدون پشتیبانیِ rotate محوری فقط فید/اسلاید می‌بیند) */
+.nav3d-dock > * {
+  animation: nav3d-pop 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+}
+.nav3d-dock > *:nth-child(2) {
+  animation-delay: 45ms;
+}
+.nav3d-dock > *:nth-child(3) {
+  animation-delay: 90ms;
+}
+.nav3d-dock > *:nth-child(4) {
+  animation-delay: 135ms;
+}
+.nav3d-dock > *:nth-child(5) {
+  animation-delay: 180ms;
+}
+.nav3d-dock > *:nth-child(6) {
+  animation-delay: 225ms;
+}
+.nav3d-dock > *:nth-child(7) {
+  animation-delay: 270ms;
+}
+.nav3d-dock > *:nth-child(8) {
+  animation-delay: 315ms;
+}
+.nav3d-dock > *:nth-child(9) {
+  animation-delay: 360ms;
+}
+.nav3d-dock > *:nth-child(10) {
+  animation-delay: 405ms;
+}
+@keyframes nav3d-pop {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+    rotate: x -30deg;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: x 0deg;
+  }
+}
+
+/* کی‌کپ فعال: ورود آبشاری + تنفس نور با هم (بعد از قانون dock > * تا کاسکاد را ببرد) */
+.nav3d-btn-active {
+  animation:
+    nav3d-pop 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.12) both,
+    nav3d-breathe 2.6s ease-in-out infinite;
+}
+/* رگه‌ی براق عبوری دوره‌ای روی کی‌کپ فعال (شبه‌المان ::after فعال آزاد است) */
+.nav3d-btn-active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgb(255 255 255 / 34%) 50%,
+    transparent 62%
+  );
+  transform: translateX(170%);
+  animation: nav3d-sheen 3.6s ease-in-out infinite;
+}
+@keyframes nav3d-sheen {
+  0% {
+    transform: translateX(170%);
+  }
+  55%,
+  100% {
+    transform: translateX(-170%);
+  }
+}
+
+/* گروه باز: کلید فرو رفته با حلقه‌ی فیروزه‌ای — بعد از قوانین هاور تا برنده‌ی کاسکاد باشد */
+.nav3d-btn[aria-expanded="true"] {
+  transform: translateY(1px);
+  outline: 1.5px solid oklch(0.72 0.14 175 / 55%);
+  outline-offset: 1px;
+}
+
+/* خط نورانی زیر نوبار + پالس مسافر رفت‌وبرگشتی
+   (overflow:hidden تا پالسِ بیرون‌زده هیچ‌وقت اسکرول افقی نسازد) */
+.nav3d-neonline {
+  position: relative;
+  height: 1px;
+  overflow: hidden;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to left,
+    transparent,
+    oklch(0.72 0.14 175 / 35%) 30%,
+    oklch(0.72 0.14 175 / 35%) 70%,
+    transparent
+  );
+}
+.nav3d-neonline::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 1px;
+  width: 150px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.8 0.15 175 / 90%) 35%,
+    rgb(255 255 255 / 95%) 50%,
+    oklch(0.8 0.15 175 / 90%) 65%,
+    transparent
+  );
+  animation: nav3d-travel 5.5s ease-in-out infinite alternate;
+}
+@keyframes nav3d-travel {
+  from {
+    translate: -160px 0;
+  }
+  to {
+    translate: 100vw 0;
+  }
+}
+
+/* پالش پنل: تیر نورانی لبه‌ی بالا (اتصال نوری به دکمه) */
+.nav3d-panel {
+  position: relative;
+}
+.nav3d-panel::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: 14%;
+  left: 14%;
+  height: 2px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.75 0.14 175 / 70%) 30%,
+    rgb(255 255 255 / 75%) 50%,
+    oklch(0.75 0.14 175 / 70%) 70%,
+    transparent
+  );
+}
+
+/* ته‌رنگ گرادیانی آیتم‌ها در هاور (از لبه‌ی راستِ RTL محو می‌شود) */
+.nav3d-item:hover {
+  background-image: linear-gradient(
+    to left,
+    oklch(0.72 0.14 175 / 16%),
+    oklch(0.72 0.14 175 / 0%) 72%
+  );
+}
+
+/* نبض نقطه‌ی آیتم فعال داخل پنل */
+.nav3d-dot-live {
+  animation: nav3d-dot-pulse 2s ease-in-out infinite;
+}
+@keyframes nav3d-dot-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 oklch(0.72 0.14 175 / 50%);
+  }
+  50% {
+    box-shadow: 0 0 0 4px oklch(0.72 0.14 175 / 0%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav3d-dock,
+  .nav3d-row::before,
+  .nav3d-row::after,
+  .nav3d-dock > *,
+  .nav3d-btn-active,
+  .nav3d-btn-active::after,
+  .nav3d-neonline::after,
+  .nav3d-dot-live {
+    animation: none;
+  }
+  .nav3d-neonline::after {
+    display: none;
+  }
+}
+
+/* ---------- تسک ۵۱: استایل سه‌بعدی و انیمیشن سراسری — همه‌ی صفحات با data-slot ---------- */
+
+/* کارت‌ها (هر صفحه‌ای که Card دارد): عمق کی‌کپ‌مانند + هاور بلند شدن با درخشش
+   (هاور با translate جدا از transform تا با انیمیشن ورود crm-fade-up تداخل نکند) */
+[data-slot="card"] {
+  transition:
+    translate 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 40%),
+    0 1px 0 0 oklch(0.55 0.13 175 / 10%),
+    0 10px 24px -14px oklch(0.2 0.02 240 / 35%);
+}
+[data-slot="card"]:hover {
+  translate: 0 -3px;
+  border-color: oklch(0.72 0.14 175 / 35%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 50%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 12%),
+    0 18px 36px -16px oklch(0.2 0.02 240 / 40%),
+    0 10px 26px -12px oklch(0.72 0.14 175 / 25%);
+}
+.dark [data-slot="card"] {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 8%),
+    0 12px 28px -14px rgb(0 0 0 / 65%);
+}
+.dark [data-slot="card"]:hover {
+  border-color: oklch(0.72 0.14 175 / 45%);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 20px 40px -16px rgb(0 0 0 / 75%),
+    0 10px 28px -12px oklch(0.72 0.14 175 / 35%);
+}
+/* کارت‌هایی که کلاس ورود ندارند هم ورود سه‌بعدی بگیرند (بدون دوباره‌انیمیشن شدن) */
+[data-slot="card"]:not(.crm-fade-up) {
+  animation: crm-fade-up 0.5s cubic-bezier(0.2, 0.8, 0.3, 1.08) 0.06s both;
+}
+
+/* ردیف‌های جدول (کاربران، تماس‌ها، حضور و غیاب و...): ورود آبشاری پلکانی */
+[data-slot="table-body"] > [data-slot="table-row"] {
+  animation: crm-row-in 0.4s cubic-bezier(0.2, 0.7, 0.3, 1.1) both;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(1) {
+  animation-delay: 0.05s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(2) {
+  animation-delay: 0.09s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(3) {
+  animation-delay: 0.13s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(4) {
+  animation-delay: 0.17s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(5) {
+  animation-delay: 0.21s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(6) {
+  animation-delay: 0.25s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(7) {
+  animation-delay: 0.29s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(8) {
+  animation-delay: 0.33s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(9) {
+  animation-delay: 0.37s;
+}
+[data-slot="table-body"] > [data-slot="table-row"]:nth-child(n + 10) {
+  animation-delay: 0.41s;
+}
+@keyframes crm-row-in {
+  from {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* دکمه‌ها (همه‌ی صفحات و دیالوگ‌ها): لمس سه‌بعدی — هاور بلند، کلیک فرو رفتن
+   (nav3d نوبار دکمه‌ی خام است و تحت تأثیر نیست؛ transition-all پایه Button کافی است) */
+[data-slot="button"]:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+[data-slot="button"]:active:not(:disabled) {
+  transform: translateY(1px) scale(0.97);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crm-fade-up,
+  [data-slot="card"]:not(.crm-fade-up),
+  [data-slot="table-body"] > [data-slot="table-row"] {
+    animation: none;
+  }
+  [data-slot="card"],
+  [data-slot="button"] {
+    transition: none;
+  }
+  [data-slot="card"]:hover,
+  [data-slot="button"]:hover:not(:disabled),
+  [data-slot="button"]:active:not(:disabled) {
+    translate: none;
+    transform: none;
+  }
+}
+
+/* ---------- تسک ۵۱ بخش ۲: کادرهای شیک سه‌بعدی + درخشش گرم «شمسی» ---------- */
+
+/* هاله‌ی محیطی پشت همه‌ی صفحات — آفتاب گرم + شفق فیروزه‌ای/بنفش (کلاس روی ریشه‌ی اپ)
+   z-index:-1 داخل زمینه‌ی چیدمان ریشه → روی پس‌زمینه، پشت تمام محتوا و متن‌ها */
+.crm-ambient {
+  position: relative;
+  z-index: 0;
+}
+.crm-ambient::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(560px 400px at center, oklch(0.87 0.09 85 / 26%), transparent 70%),
+    radial-gradient(660px 480px at center, oklch(0.82 0.1 172 / 16%), transparent 70%),
+    radial-gradient(760px 560px at center, oklch(0.72 0.12 300 / 12%), transparent 72%);
+  background-repeat: no-repeat;
+  background-size:
+    560px 400px,
+    660px 480px,
+    760px 560px;
+  background-position:
+    86% 0%,
+    6% 14%,
+    50% 100%;
+  animation: crm-ambient-breathe 14s ease-in-out infinite alternate;
+}
+@keyframes crm-ambient-breathe {
+  from {
+    opacity: 0.72;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.dark .crm-ambient::before {
+  background-image:
+    radial-gradient(560px 400px at center, oklch(0.75 0.11 85 / 15%), transparent 70%),
+    radial-gradient(660px 480px at center, oklch(0.75 0.12 172 / 13%), transparent 70%),
+    radial-gradient(760px 560px at center, oklch(0.65 0.14 300 / 17%), transparent 72%);
+}
+
+/* دیالوگ‌ها و هشدارها — ورود فلیپ سه‌بعدی + قاب گرادیانی گرم + سایه‌ی خورشیدی
+   (فقط حالت open تا انیمیشن بسته‌شدنِ قبلی سر جایش بماند؛
+   مرکزچینی دیالوگ با translate جدا است و transform انیمیشن تداخل نمی‌کند) */
+[data-slot="dialog-content"][data-state="open"],
+[data-slot="alert-dialog-content"][data-state="open"] {
+  animation: crm-dialog-3d 0.36s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+  border-color: transparent;
+  background:
+    linear-gradient(to bottom, var(--background), var(--background)) padding-box,
+    linear-gradient(
+      135deg,
+      oklch(0.85 0.09 85 / 50%),
+      oklch(0.72 0.14 175 / 55%),
+      oklch(0.65 0.19 300 / 50%)
+    ) border-box;
+  box-shadow:
+    0 26px 60px -24px oklch(0.2 0.02 240 / 45%),
+    0 14px 44px -20px oklch(0.75 0.1 85 / 30%),
+    0 10px 30px -18px oklch(0.72 0.14 175 / 35%);
+}
+@keyframes crm-dialog-3d {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-8deg) scale(0.965) translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0deg) scale(1) translateY(0);
+  }
+}
+
+/* شیت پایین موبایل — بالا آمدن سه‌بعدی مثل دربِ کج‌شده از لبه‌ی پایین */
+[data-slot="sheet-content"][data-state="open"] {
+  transform-origin: center bottom;
+  animation: crm-sheet-3d 0.4s cubic-bezier(0.2, 0.8, 0.3, 1.08) both;
+}
+@keyframes crm-sheet-3d {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateX(-10deg) translateY(48px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg) translateY(0);
+  }
+}
+
+/* تایل‌های شیت «بخش‌های بیشتر» — ورود آبشاری پلکانی
+   (با translate/rotate مستقل تا scale کلیکِ active:scale تداخل نکند) */
+.crm-sheet-tile {
+  animation: crm-tile-pop 0.44s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+  backface-visibility: hidden;
+}
+.crm-sheet-tile:nth-child(2) {
+  animation-delay: 45ms;
+}
+.crm-sheet-tile:nth-child(3) {
+  animation-delay: 90ms;
+}
+.crm-sheet-tile:nth-child(4) {
+  animation-delay: 135ms;
+}
+.crm-sheet-tile:nth-child(5) {
+  animation-delay: 180ms;
+}
+.crm-sheet-tile:nth-child(6) {
+  animation-delay: 225ms;
+}
+.crm-sheet-tile:nth-child(7) {
+  animation-delay: 270ms;
+}
+.crm-sheet-tile:nth-child(8) {
+  animation-delay: 315ms;
+}
+.crm-sheet-tile:nth-child(9) {
+  animation-delay: 360ms;
+}
+.crm-sheet-tile:nth-child(10) {
+  animation-delay: 405ms;
+}
+.crm-sheet-tile:nth-child(n + 11) {
+  animation-delay: 450ms;
+}
+@keyframes crm-tile-pop {
+  from {
+    opacity: 0;
+    translate: 0 16px;
+    rotate: x -16deg;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+    rotate: x 0deg;
+  }
+}
+
+/* پاپ‌آورهای سلکت — پولیش قاب و سایه (بدون انیمیشن تا مکان‌یابیِ پوپر خراب نشود) */
+[data-slot="select-content"] {
+  border-color: oklch(0.72 0.14 175 / 25%);
+  box-shadow:
+    0 18px 40px -18px oklch(0.2 0.02 240 / 40%),
+    0 8px 24px -12px oklch(0.72 0.14 175 / 25%);
+}
+
+/* فیلدها — فوکوس: بلند شدن ظریف + هاله‌ی فیروزه‌ای با ته‌مایه‌ی گرم */
+[data-slot="input"],
+[data-slot="textarea"],
+[data-slot="select-trigger"] {
+  transition:
+    translate 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    color 0.18s ease,
+    background-color 0.18s ease;
+}
+[data-slot="input"]:focus-visible,
+[data-slot="textarea"]:focus-visible,
+[data-slot="select-trigger"]:focus-visible {
+  translate: 0 -1px;
+  box-shadow:
+    0 0 0 3px oklch(0.72 0.14 175 / 16%),
+    0 8px 18px -10px oklch(0.8 0.1 85 / 40%);
+}
+/* فیلد نامعتبر — حلقه‌ی خطا قرمز بماند */
+[data-slot="input"][aria-invalid="true"]:focus-visible,
+[data-slot="textarea"][aria-invalid="true"]:focus-visible,
+[data-slot="select-trigger"][aria-invalid="true"]:focus-visible {
+  box-shadow:
+    0 0 0 3px oklch(0.6 0.2 25 / 22%),
+    0 8px 18px -10px oklch(0.6 0.2 25 / 35%);
+}
+
+/* دکمه‌های گرادیانی CTA — موج براق هنگام هاور (مثل داک نوبار) */
+[data-slot="button"][class*="bg-gradient"] {
+  position: relative;
+  overflow: hidden;
+}
+[data-slot="button"][class*="bg-gradient"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    100deg,
+    transparent 32%,
+    rgb(255 255 255 / 35%) 50%,
+    transparent 68%
+  );
+  transform: translateX(170%);
+  transition: transform 0.6s ease;
+}
+[data-slot="button"][class*="bg-gradient"]:hover::after {
+  transform: translateX(-170%);
+}
+
+/* درخشش هاور کارت‌ها — لایه‌ی گرم خورشیدی اضافه شد (بعد از قوانین بخش ۱ تا کاسکاد را ببرد) */
+[data-slot="card"]:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 50%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 12%),
+    0 18px 36px -16px oklch(0.2 0.02 240 / 40%),
+    0 10px 26px -12px oklch(0.72 0.14 175 / 25%),
+    0 6px 30px -14px oklch(0.83 0.1 85 / 30%);
+}
+.dark [data-slot="card"]:hover {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 20px 40px -16px rgb(0 0 0 / 75%),
+    0 10px 28px -12px oklch(0.72 0.14 175 / 35%),
+    0 6px 30px -14px oklch(0.8 0.11 85 / 22%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crm-ambient::before,
+  [data-slot="dialog-content"][data-state="open"],
+  [data-slot="alert-dialog-content"][data-state="open"],
+  [data-slot="sheet-content"][data-state="open"],
+  .crm-sheet-tile {
+    animation: none;
+  }
+  [data-slot="input"],
+  [data-slot="textarea"],
+  [data-slot="select-trigger"] {
+    transition: none;
+  }
+  [data-slot="input"]:focus-visible,
+  [data-slot="textarea"]:focus-visible,
+  [data-slot="select-trigger"]:focus-visible {
+    translate: none;
+  }
+  [data-slot="button"][class*="bg-gradient"]::after {
+    display: none;
+  }
+}
+
+/* ---------- تسک ۵۱ بخش ۳: تقویم شمسی همه‌ی فرم‌ها — هم‌قواره‌ی فیلدها،
+   پنل با همان زبان دیالوگ‌ها (قاب گرادیانی گرم + ورود فلیپ سه‌بعدی) ---------- */
+
+/* تریگر تقویم هم مثل بقیه‌ی فیلدها هنگام فوکوس بلند شود و هاله بگیرد */
+[data-jalali-trigger] {
+  transition:
+    translate 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+[data-jalali-trigger]:focus-visible,
+[data-jalali-trigger][data-jalali-trigger="open"] {
+  translate: 0 -1px;
+  box-shadow:
+    0 0 0 3px oklch(0.72 0.14 175 / 16%),
+    0 8px 18px -10px oklch(0.8 0.1 85 / 40%);
+}
+
+/* پنل تقویم — قاب گرادیانی همان دیالوگ‌ها + ورود سه‌بعدی از لبه‌ی خودش */
+.jalali-panel {
+  border-color: transparent;
+  background:
+    linear-gradient(to bottom, var(--background), var(--background)) padding-box,
+    linear-gradient(
+      135deg,
+      oklch(0.85 0.09 85 / 50%),
+      oklch(0.72 0.14 175 / 55%),
+      oklch(0.65 0.19 300 / 50%)
+    ) border-box;
+  box-shadow:
+    0 24px 52px -22px oklch(0.2 0.02 240 / 45%),
+    0 12px 34px -18px oklch(0.75 0.1 85 / 30%),
+    0 8px 26px -16px oklch(0.72 0.14 175 / 35%);
+  animation: jalali-pop 0.3s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+}
+@keyframes jalali-pop {
+  from {
+    opacity: 0;
+    transform: perspective(900px) rotateX(-7deg) scale(0.95) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(900px) rotateX(0deg) scale(1) translateY(0);
+  }
+}
+
+/* دکمه‌های ناوبری ماه/سال سرستون */
+.jalali-nav-btn {
+  display: flex;
+  height: 28px;
+  width: 28px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    scale 0.15s ease;
+}
+.jalali-nav-btn:hover {
+  background-color: oklch(0.72 0.14 175 / 14%);
+  color: oklch(0.55 0.1 175);
+  scale: 1.08;
+}
+.jalali-nav-btn:active {
+  scale: 0.92;
+}
+.dark .jalali-nav-btn:hover {
+  color: oklch(0.8 0.12 175);
+}
+
+/* روزهای تقویم — هاور بالاکشیدن ظریف؛ روز انتخابی با پاپِ فنری سبز می‌شود
+   (scale با property مستقل تا با transform بقیه تداخل نکند — درس تسک ۴۸) */
+.jalali-day:hover {
+  translate: 0 -1px;
+}
+.jalali-day-sel {
+  animation: jalali-day-pop 0.34s cubic-bezier(0.2, 0.8, 0.3, 1.35) both;
+}
+@keyframes jalali-day-pop {
+  from {
+    scale: 0.55;
+    opacity: 0.3;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jalali-panel,
+  .jalali-day-sel {
+    animation: none;
+  }
+  [data-jalali-trigger] {
+    transition: none;
+  }
+  [data-jalali-trigger]:focus-visible,
+  [data-jalali-trigger][data-jalali-trigger="open"] {
+    translate: none;
+  }
+  .jalali-nav-btn {
+    transition: none;
+  }
+  .jalali-day:hover {
+    translate: none;
+  }
+}
+
+/* ---------- تسک ۵۲: صفحه‌ی «قوانین و مقررات شرکت هلدینگ مهر» ---------- */
+/* سربرگ سند — قاب گرادیانی گرم هم‌زبان دیالوگ‌ها + هاله‌ی تنفس‌دار پشت متن
+   (هاله pointer-events:none و پشت لایه‌ی متن با z-10 → هیچ متنی پوشیده نمی‌شود) */
+.rules-hero {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.985 0.008 95 / 94%),
+        oklch(0.972 0.014 172 / 90%)
+      )
+      padding-box,
+    linear-gradient(
+      115deg,
+      oklch(0.72 0.14 172),
+      oklch(0.82 0.13 85),
+      oklch(0.7 0.16 305),
+      oklch(0.72 0.14 172)
+    )
+    border-box;
+  box-shadow:
+    0 18px 40px -18px oklch(0.55 0.08 175 / 35%),
+    0 4px 14px -6px oklch(0.6 0.1 85 / 22%);
+  animation: rules-in 0.6s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+}
+.rules-hero::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      38% 45% at 22% 28%,
+      oklch(0.75 0.15 175 / 22%),
+      transparent 70%
+    ),
+    radial-gradient(
+      34% 42% at 78% 22%,
+      oklch(0.8 0.13 85 / 20%),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 48% at 60% 85%,
+      oklch(0.7 0.15 305 / 18%),
+      transparent 72%
+    );
+  animation: rules-breathe 9s ease-in-out infinite alternate;
+}
+.dark .rules-hero {
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.28 0.02 250 / 82%),
+        oklch(0.22 0.02 250 / 74%)
+      )
+      padding-box,
+    linear-gradient(
+      115deg,
+      oklch(0.72 0.14 172),
+      oklch(0.82 0.13 85),
+      oklch(0.7 0.16 305),
+      oklch(0.72 0.14 172)
+    )
+    border-box;
+  box-shadow:
+    0 18px 44px -18px oklch(0.1 0.03 175 / 60%),
+    0 4px 14px -6px oklch(0.55 0.1 85 / 18%);
+}
+@keyframes rules-breathe {
+  from {
+    opacity: 0.55;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* کارت بخش‌ها — قاب گرادیانی ملایم، ورود آبشاری با فلیپ سه‌بعدی،
+   هاور بلندشدن با translate مستقل (بدون تداخل با transform انیمیشن ورود) */
+.rules-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.99 0.004 95 / 88%),
+        oklch(0.985 0.006 172 / 84%)
+      )
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.75 0.1 172 / 55%),
+      oklch(0.8 0.08 85 / 45%),
+      oklch(0.72 0.1 305 / 50%)
+    )
+    border-box;
+  box-shadow: 0 10px 26px -14px oklch(0.5 0.06 175 / 28%);
+  animation: rules-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+  transition: translate 0.22s ease, box-shadow 0.22s ease;
+}
+.rules-card:hover {
+  translate: 0 -4px;
+  box-shadow:
+    0 22px 40px -16px oklch(0.55 0.1 175 / 38%),
+    0 6px 16px -8px oklch(0.7 0.12 85 / 30%);
+}
+.dark .rules-card {
+  background:
+    linear-gradient(to bottom, oklch(0.26 0.02 250 / 76%), oklch(0.21 0.02 250 / 68%))
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.7 0.1 172 / 50%),
+      oklch(0.72 0.08 85 / 40%),
+      oklch(0.66 0.1 305 / 45%)
+    )
+    border-box;
+  box-shadow: 0 10px 26px -14px oklch(0.1 0.03 175 / 55%);
+}
+
+/* کارت پایانی «تعهد مشترک» — گرم‌تر از بقیه */
+.rules-closing {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.985 0.012 85 / 92%),
+        oklch(0.975 0.012 70 / 88%)
+      )
+      padding-box,
+    linear-gradient(
+      100deg,
+      oklch(0.82 0.13 85),
+      oklch(0.72 0.14 172),
+      oklch(0.82 0.13 85)
+    )
+    border-box;
+  box-shadow:
+    0 16px 36px -18px oklch(0.6 0.11 70 / 35%),
+    0 4px 12px -6px oklch(0.6 0.1 85 / 22%);
+  animation: rules-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+  position: relative;
+  overflow: hidden;
+}
+.rules-closing::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      36% 45% at 30% 30%,
+      oklch(0.8 0.13 85 / 20%),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 48% at 72% 78%,
+      oklch(0.75 0.14 172 / 18%),
+      transparent 72%
+    );
+  animation: rules-breathe 9s ease-in-out infinite alternate;
+}
+.dark .rules-closing {
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.27 0.025 70 / 78%),
+        oklch(0.22 0.02 70 / 70%)
+      )
+      padding-box,
+    linear-gradient(
+      100deg,
+      oklch(0.78 0.12 85),
+      oklch(0.68 0.13 172),
+      oklch(0.78 0.12 85)
+    )
+    border-box;
+}
+
+/* ورود فلیپ سه‌بعدی مشترک کارت‌ها (هاور با translate جدا است → تداخل ندارد) */
+@keyframes rules-in {
+  from {
+    opacity: 0;
+    transform: perspective(800px) rotateX(7deg) translateY(16px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(800px) rotateX(0deg) translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rules-hero,
+  .rules-card,
+  .rules-closing {
+    animation: none;
+  }
+  .rules-hero::before,
+  .rules-closing::before {
+    animation: none;
+  }
+  .rules-card {
+    transition: none;
+  }
+  .rules-card:hover {
+    translate: none;
+  }
+}
+
+/* ---------- تسک ۵۳: کارتابل تامین اجناس (فقط رول مدیریتی) ---------- */
+/* سربرگ — همان زبان قاب گرادیانی صفحه‌ی قوانین با ته‌مایه‌ی فیروزه‌ای/بنفش
+   هاله‌ی تنفس‌دار پشت لایه‌ی متن (pointer-events:none) → هیچ متنی پوشیده نمی‌شود */
+.proc-hero {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.985 0.008 95 / 94%),
+        oklch(0.972 0.014 245 / 90%)
+      )
+      padding-box,
+    linear-gradient(
+      115deg,
+      oklch(0.72 0.14 172),
+      oklch(0.7 0.15 265),
+      oklch(0.82 0.13 85),
+      oklch(0.72 0.14 172)
+    )
+    border-box;
+  box-shadow:
+    0 18px 40px -18px oklch(0.55 0.08 245 / 35%),
+    0 4px 14px -6px oklch(0.6 0.1 172 / 22%);
+  animation: rules-in 0.6s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+  position: relative;
+}
+.proc-hero::before {
+  content: "";
+  position: absolute;
+  inset: -30%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      38% 45% at 24% 30%,
+      oklch(0.75 0.15 172 / 20%),
+      transparent 70%
+    ),
+    radial-gradient(
+      36% 44% at 76% 24%,
+      oklch(0.72 0.15 265 / 18%),
+      transparent 70%
+    ),
+    radial-gradient(
+      40% 48% at 58% 86%,
+      oklch(0.8 0.13 85 / 16%),
+      transparent 72%
+    );
+  animation: rules-breathe 9s ease-in-out infinite alternate;
+}
+.dark .proc-hero {
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.28 0.02 250 / 82%),
+        oklch(0.22 0.02 250 / 74%)
+      )
+      padding-box,
+    linear-gradient(
+      115deg,
+      oklch(0.72 0.14 172),
+      oklch(0.7 0.15 265),
+      oklch(0.82 0.13 85),
+      oklch(0.72 0.14 172)
+    )
+    border-box;
+}
+
+/* کارت‌های آمار — ورود آبشاری + هاور بلندشدن با translate مستقل */
+.proc-stat {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.99 0.004 95 / 88%),
+        oklch(0.985 0.006 245 / 84%)
+      )
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.75 0.1 172 / 55%),
+      oklch(0.72 0.1 265 / 45%),
+      oklch(0.8 0.08 85 / 40%)
+    )
+    border-box;
+  box-shadow: 0 10px 26px -14px oklch(0.5 0.06 245 / 28%);
+  animation: rules-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+  transition: translate 0.22s ease, box-shadow 0.22s ease;
+}
+.proc-stat:hover {
+  translate: 0 -3px;
+  box-shadow:
+    0 20px 38px -16px oklch(0.55 0.1 245 / 38%),
+    0 6px 16px -8px oklch(0.7 0.12 172 / 28%);
+}
+.dark .proc-stat {
+  background:
+    linear-gradient(to bottom, oklch(0.26 0.02 250 / 76%), oklch(0.21 0.02 250 / 68%))
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.7 0.1 172 / 50%),
+      oklch(0.66 0.1 265 / 45%),
+      oklch(0.72 0.08 85 / 35%)
+    )
+    border-box;
+}
+
+/* قالب جدول دسکتاپ — قاب گرادیانی ملایم دور کارت جدول */
+.proc-table {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(to bottom, oklch(0.99 0.004 95 / 90%), oklch(0.985 0.006 245 / 86%))
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.75 0.1 172 / 50%),
+      oklch(0.72 0.1 265 / 42%),
+      oklch(0.8 0.08 85 / 38%)
+    )
+    border-box;
+  box-shadow: 0 10px 26px -14px oklch(0.5 0.06 245 / 26%);
+  animation: rules-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) 0.24s both;
+}
+.dark .proc-table {
+  background:
+    linear-gradient(to bottom, oklch(0.26 0.02 250 / 78%), oklch(0.21 0.02 250 / 70%))
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.7 0.1 172 / 48%),
+      oklch(0.66 0.1 265 / 42%),
+      oklch(0.72 0.08 85 / 34%)
+    )
+    border-box;
+}
+
+/* کارت‌های موبایل — همان ورود آبشاری */
+.proc-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(
+        to bottom,
+        oklch(0.99 0.004 95 / 88%),
+        oklch(0.985 0.006 245 / 84%)
+      )
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.75 0.1 172 / 55%),
+      oklch(0.72 0.1 265 / 45%),
+      oklch(0.8 0.08 85 / 40%)
+    )
+    border-box;
+  box-shadow: 0 10px 26px -14px oklch(0.5 0.06 245 / 28%);
+  animation: rules-in 0.55s cubic-bezier(0.2, 0.8, 0.3, 1.1) both;
+}
+.dark .proc-card {
+  background:
+    linear-gradient(to bottom, oklch(0.26 0.02 250 / 76%), oklch(0.21 0.02 250 / 68%))
+      padding-box,
+    linear-gradient(
+      140deg,
+      oklch(0.7 0.1 172 / 50%),
+      oklch(0.66 0.1 265 / 45%),
+      oklch(0.72 0.08 85 / 35%)
+    )
+    border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .proc-hero,
+  .proc-stat,
+  .proc-table,
+  .proc-card {
+    animation: none;
+  }
+  .proc-hero::before {
+    animation: none;
+  }
+  .proc-stat {
+    transition: none;
+  }
+  .proc-stat:hover {
+    translate: none;
+  }
+}
+
+/* =====================================================================
+   تسک ۵۶ — بخش ۱: رفع باگ «محو شدن رنگ دکمه‌های گروهی نوبار بعد از کلیک»
+   =====================================================================
+   دکمه‌های دارای زیرشاخه موقع باز شدن (aria-expanded=true) و حتی در حالت
+   عادی، روی زمینه‌ی شیشه‌ای داک کم‌رنگ دیده می‌شدند (هم حالت روز هم شب).
+   حالا: حالت عادی = ته‌رنگ فیروزه‌ای خوانا؛ حالت باز = کی‌کپ پررنگ با
+   متن روشن — در هر دو تم صریحاً تعریف شده تا هیچ حالتی محو نباشد.
+   (این قوانین آخر فایل هستند و از کلاس‌های Tailwind دکمه پرقدرت‌ترند) */
+
+/* حالت عادی دکمه‌های غیرفعال — ته‌رنگ فیروزه‌ای + متن پرکنتراست (روشن) */
+.nav3d-btn:not(.nav3d-btn-active) {
+  background-color: oklch(0.945 0.028 172);
+  color: oklch(0.4 0.055 175);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 22%),
+    0 6px 12px -6px oklch(0.2 0.02 240 / 35%);
+}
+.nav3d-btn:not(.nav3d-btn-active):hover {
+  background-color: oklch(0.915 0.048 172);
+  color: oklch(0.33 0.075 175);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 4px 0 0 oklch(0.55 0.13 175 / 24%),
+    0 12px 20px -8px oklch(0.2 0.02 240 / 40%);
+}
+/* حالت عادی در تم شب — گرانیتی مایل به فیروزه، متن روشن */
+.dark .nav3d-btn:not(.nav3d-btn-active) {
+  background-color: oklch(0.3 0.035 175);
+  color: oklch(0.86 0.06 172);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 2px 0 0 rgb(0 0 0 / 40%),
+    0 8px 14px -6px rgb(0 0 0 / 60%);
+}
+.dark .nav3d-btn:not(.nav3d-btn-active):hover {
+  background-color: oklch(0.34 0.05 175);
+  color: oklch(0.92 0.08 172);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    0 4px 0 0 rgb(0 0 0 / 45%),
+    0 14px 22px -8px rgb(0 0 0 / 70%);
+}
+
+/* منوی گروه باز شده — کی‌کپ فیروزه‌ای پرقدرت (روز)؛ رنگ و پس‌زمینه صریح
+   تا «محو شدن» بعد از کلیک کاملاً غیرممکن شود */
+.nav3d-btn[aria-expanded="true"] {
+  transform: translateY(1px);
+  outline: 1.5px solid oklch(0.72 0.14 175 / 65%);
+  outline-offset: 1px;
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.93 0.06 172),
+    oklch(0.84 0.09 170)
+  );
+  background-color: oklch(0.88 0.07 172);
+  color: oklch(0.34 0.085 175);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 65%),
+    0 2px 0 0 oklch(0.5 0.11 172 / 55%),
+    0 10px 20px -8px oklch(0.55 0.13 175 / 55%);
+}
+.nav3d-btn[aria-expanded="true"]:hover {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.95 0.06 172),
+    oklch(0.86 0.09 170)
+  );
+  color: oklch(0.3 0.09 175);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 70%),
+    0 3px 0 0 oklch(0.5 0.11 172 / 55%),
+    0 12px 22px -8px oklch(0.55 0.13 175 / 60%);
+}
+/* همان حالت در تم شب — زمردی روشن روی تیره */
+.dark .nav3d-btn[aria-expanded="true"] {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.36 0.06 172),
+    oklch(0.29 0.06 170)
+  );
+  background-color: oklch(0.33 0.06 172);
+  color: oklch(0.9 0.12 172);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 14%),
+    0 2px 0 0 rgb(0 0 0 / 45%),
+    0 10px 20px -8px oklch(0.72 0.14 175 / 45%);
+}
+.dark .nav3d-btn[aria-expanded="true"]:hover {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.4 0.07 172),
+    oklch(0.31 0.06 170)
+  );
+  color: oklch(0.95 0.13 172);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 16%),
+    0 3px 0 0 rgb(0 0 0 / 45%),
+    0 12px 24px -8px oklch(0.72 0.14 175 / 55%);
+}
+
+/* فوکوس کیبورد — حلقه‌ی واضح (هیچ‌وقت محو نمی‌شود) */
+.nav3d-btn:focus-visible {
+  outline: 2px solid oklch(0.72 0.14 175 / 80%);
+  outline-offset: 2px;
+}
+.nav3d-btn:focus {
+  color: inherit;
+}
+
+/* =====================================================================
+   تسک ۵۶ — بخش ۲: سه‌بعدی‌سازی مکمل سراسری — بج، تب، منو، پاپ‌آور،
+   سوییچ، چک‌باکس، جدول، توست — همه با data-slot بدون تغییر کامپوننت‌ها
+   ===================================================================== */
+
+/* انتخاب متن — فیروزه‌ای برند */
+::selection {
+  background: oklch(0.72 0.14 175 / 30%);
+}
+.dark ::selection {
+  background: oklch(0.72 0.14 175 / 40%);
+}
+
+/* بج‌ها — کی‌کپ مینی سه‌بعدی */
+[data-slot="badge"] {
+  transition:
+    translate 0.18s ease,
+    box-shadow 0.18s ease;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 45%),
+    0 1px 0 0 oklch(0.55 0.13 175 / 14%),
+    0 4px 10px -5px oklch(0.2 0.02 240 / 35%);
+}
+[data-slot="badge"]:hover {
+  translate: 0 -1px;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 55%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 16%),
+    0 6px 14px -6px oklch(0.2 0.02 240 / 40%),
+    0 4px 12px -6px oklch(0.72 0.14 175 / 30%);
+}
+.dark [data-slot="badge"] {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 12%),
+    0 5px 12px -6px rgb(0 0 0 / 60%);
+}
+
+/* تب‌ها — کی‌کپ؛ تب فعال گرادیان فیروزه‌ای با متن سفید */
+[data-slot="tabs-trigger"] {
+  transition:
+    translate 0.16s ease,
+    box-shadow 0.16s ease,
+    background-color 0.16s ease,
+    color 0.16s ease;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 45%),
+    0 2px 0 0 oklch(0.55 0.13 175 / 18%),
+    0 6px 12px -6px oklch(0.2 0.02 240 / 30%);
+}
+[data-slot="tabs-trigger"]:hover {
+  translate: 0 -1px;
+}
+[data-slot="tabs-trigger"]:active {
+  translate: 0 1px;
+}
+[data-slot="tabs-trigger"][data-state="active"] {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.72 0.14 175),
+    oklch(0.58 0.12 172)
+  );
+  color: oklch(0.99 0.005 160);
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 35%),
+    0 3px 0 0 oklch(0.42 0.09 175 / 90%),
+    0 10px 18px -6px oklch(0.72 0.14 175 / 50%);
+}
+.dark [data-slot="tabs-trigger"] {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 2px 0 0 rgb(0 0 0 / 40%),
+    0 8px 14px -6px rgb(0 0 0 / 55%);
+}
+
+/* منوی دراپ‌داون — باز شدن سه‌بعدی + قاب گرادیانی هم‌زبان دیالوگ‌ها */
+[data-slot="dropdown-menu-content"][data-state="open"] {
+  border-color: transparent;
+  background:
+    linear-gradient(to bottom, var(--popover), var(--popover)) padding-box,
+    linear-gradient(
+      135deg,
+      oklch(0.85 0.09 85 / 45%),
+      oklch(0.72 0.14 175 / 50%),
+      oklch(0.65 0.19 300 / 45%)
+    ) border-box;
+  box-shadow:
+    0 22px 48px -20px oklch(0.2 0.02 240 / 40%),
+    0 8px 24px -14px oklch(0.72 0.14 175 / 30%);
+  animation: crm-pop-3d 0.26s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+  transform-origin: top center;
+}
+@keyframes crm-pop-3d {
+  from {
+    opacity: 0;
+    transform: perspective(700px) rotateX(-10deg) scale(0.96) translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: perspective(700px) rotateX(0deg) scale(1) translateY(0);
+  }
+}
+
+/* پاپ‌آور و تولتیپ — ورود سه‌بعدی + قاب گرم */
+[data-slot="popover-content"][data-state="open"] {
+  animation: crm-pop-3d 0.26s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+  box-shadow:
+    0 20px 44px -20px oklch(0.2 0.02 240 / 40%),
+    0 8px 22px -14px oklch(0.75 0.1 85 / 30%);
+}
+[data-slot="tooltip-content"][data-state="delayed-open"],
+[data-slot="tooltip-content"][data-state="instant-open"] {
+  animation: crm-pop-3d 0.2s cubic-bezier(0.2, 0.8, 0.3, 1.12) both;
+  border-color: oklch(0.72 0.14 175 / 30%);
+  box-shadow: 0 12px 28px -12px oklch(0.2 0.02 240 / 45%);
+}
+
+/* سوییچ — ریل سه‌بعدی؛ حالت روشن هاله‌ی فیروزه‌ای */
+[data-slot="switch"] {
+  box-shadow:
+    inset 0 1px 3px oklch(0.2 0.02 240 / 25%),
+    inset 0 -1px 0 rgb(255 255 255 / 30%);
+  transition: box-shadow 0.2s ease;
+}
+[data-slot="switch"][data-state="checked"] {
+  box-shadow:
+    inset 0 1px 3px oklch(0.3 0.08 175 / 45%),
+    inset 0 -1px 0 rgb(255 255 255 / 25%),
+    0 0 12px -2px oklch(0.72 0.14 175 / 55%);
+}
+.dark [data-slot="switch"] {
+  box-shadow:
+    inset 0 1px 3px rgb(0 0 0 / 55%),
+    inset 0 -1px 0 rgb(255 255 255 / 8%);
+}
+
+/* چک‌باکس — کی‌کپ کوچک؛ تیک‌خورده گرادیان برند */
+[data-slot="checkbox"] {
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 40%),
+    0 2px 4px -2px oklch(0.2 0.02 240 / 40%);
+  transition:
+    box-shadow 0.18s ease,
+    translate 0.18s ease;
+}
+[data-slot="checkbox"]:hover {
+  translate: 0 -1px;
+}
+[data-slot="checkbox"][data-state="checked"] {
+  background-image: linear-gradient(
+    135deg,
+    oklch(0.72 0.14 175),
+    oklch(0.55 0.12 172)
+  );
+  border-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 35%),
+    0 3px 10px -4px oklch(0.72 0.14 175 / 60%);
+}
+
+/* سرستون جدول — ته‌رنگ گرادیانی برند */
+[data-slot="table-header"] {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.72 0.14 175 / 8%),
+    oklch(0.83 0.1 85 / 5%)
+  );
+}
+.dark [data-slot="table-header"] {
+  background-image: linear-gradient(
+    to bottom,
+    oklch(0.72 0.14 175 / 12%),
+    transparent
+  );
+}
+
+/* توست‌های sonner — شیشه‌ی سه‌بعدی با قاب فیروزه‌ای */
+[data-sonner-toast] {
+  border-color: oklch(0.72 0.14 175 / 28%) !important;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 35%),
+    0 18px 40px -18px oklch(0.2 0.02 240 / 45%),
+    0 8px 22px -12px oklch(0.72 0.14 175 / 30%) !important;
+  backdrop-filter: blur(14px);
+}
+[data-sonner-toast][data-type="success"] {
+  border-color: oklch(0.72 0.14 175 / 45%) !important;
+}
+
+/* =====================================================================
+   تسک ۵۶ — بخش ۳: صحنه‌ی سینمایی سه‌بعدی صفحه‌ی لاگین
+   ستاپ اکشن: آسمان عمیق، نورافکن‌های جاروب‌کن، زمین گرید سه‌بعدی متحرک،
+   مکعب‌های شنارور، ذرات، گِرِین فیلم و وینیت — فقط CSS، بدون JS
+   ===================================================================== */
+
+/* صحنه — لایه‌ی پشت محتوای لاگین با perspective برای عمق */
+.login3d-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  perspective: 900px;
+}
+
+/* آسمان سینمایی — پیش‌فرض: سحر گرم (حالت روز)؛ نسخه‌ی شب با .dark زیرتر */
+.login3d-sky {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      120% 90% at 50% 112%,
+      oklch(0.85 0.08 172 / 50%),
+      transparent 60%
+    ),
+    radial-gradient(
+      80% 60% at 82% 6%,
+      oklch(0.88 0.09 300 / 26%),
+      transparent 65%
+    ),
+    radial-gradient(
+      70% 55% at 15% 18%,
+      oklch(0.9 0.11 85 / 30%),
+      transparent 60%
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(0.75 0.05 240),
+      oklch(0.84 0.05 200) 45%,
+      oklch(0.9 0.05 172)
+    );
+  animation: login3d-sky-breathe 16s ease-in-out infinite alternate;
+}
+@keyframes login3d-sky-breathe {
+  from {
+    opacity: 0.85;
+    scale: 1.02;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+/* شب — آسمان عمیق سینمایی */
+.dark .login3d-sky {
+  background:
+    radial-gradient(
+      120% 90% at 50% 110%,
+      oklch(0.45 0.09 172 / 55%),
+      transparent 60%
+    ),
+    radial-gradient(
+      80% 60% at 82% 8%,
+      oklch(0.55 0.14 300 / 30%),
+      transparent 65%
+    ),
+    radial-gradient(
+      70% 55% at 15% 20%,
+      oklch(0.6 0.13 85 / 22%),
+      transparent 60%
+    ),
+    linear-gradient(
+      to bottom,
+      oklch(0.2 0.04 260),
+      oklch(0.27 0.05 240) 45%,
+      oklch(0.32 0.06 190)
+    );
+}
+
+/* نورافکن‌های جاروب‌کن — سه ستون نور مایل که آرام می‌چرخند */
+.login3d-beams {
+  position: absolute;
+  inset: -20% -10%;
+}
+.login3d-beams > i {
+  position: absolute;
+  top: -12%;
+  width: 190px;
+  height: 130%;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.9 0.06 172 / 34%),
+    oklch(0.85 0.08 300 / 16%) 55%,
+    transparent 85%
+  );
+  filter: blur(18px);
+  transform-origin: top center;
+  mix-blend-mode: screen;
+}
+.login3d-beams > i:nth-child(1) {
+  right: 12%;
+  animation: login3d-beam-a 11s ease-in-out infinite alternate;
+}
+.login3d-beams > i:nth-child(2) {
+  right: 46%;
+  width: 260px;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.88 0.08 85 / 26%),
+    oklch(0.85 0.06 200 / 14%) 55%,
+    transparent 85%
+  );
+  animation: login3d-beam-b 14s ease-in-out infinite alternate;
+}
+.login3d-beams > i:nth-child(3) {
+  right: 74%;
+  width: 150px;
+  background: linear-gradient(
+    to bottom,
+    oklch(0.9 0.09 300 / 30%),
+    oklch(0.86 0.07 172 / 14%) 55%,
+    transparent 85%
+  );
+  animation: login3d-beam-a 17s ease-in-out infinite alternate-reverse;
+}
+@keyframes login3d-beam-a {
+  from {
+    transform: rotate(-14deg);
+    opacity: 0.6;
+  }
+  to {
+    transform: rotate(16deg);
+    opacity: 1;
+  }
+}
+@keyframes login3d-beam-b {
+  from {
+    transform: rotate(12deg);
+    opacity: 0.9;
+  }
+  to {
+    transform: rotate(-18deg);
+    opacity: 0.55;
+  }
+}
+/* روز: نورافکن ملایم؛ شب: جاروب پررنگ با blend روشن */
+.login3d-beams > i {
+  mix-blend-mode: normal;
+  opacity: 0.5;
+}
+.dark .login3d-beams > i {
+  mix-blend-mode: screen;
+  opacity: 1;
+}
+
+/* زمین گرید سه‌بعدی — شبکه با حرکت مداوم به جلو (رنگ پایه: روز) */
+.login3d-grid {
+  position: absolute;
+  inset: auto -30% -12% -30%;
+  height: 58%;
+  background-image:
+    linear-gradient(oklch(0.62 0.12 172 / 34%) 1.5px, transparent 1.5px),
+    linear-gradient(
+      90deg,
+      oklch(0.6 0.12 300 / 26%),
+      transparent 1.5px
+    );
+  background-size: 46px 46px;
+  transform: perspective(520px) rotateX(62deg);
+  transform-origin: center top;
+  animation: login3d-grid-run 2.6s linear infinite;
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 85%) 34%,
+    black 100%
+  );
+  mask-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgb(0 0 0 / 85%) 34%,
+    black 100%
+  );
+}
+@keyframes login3d-grid-run {
+  from {
+    background-position:
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      0 46px,
+      0 0;
+  }
+}
+/* روز — گرید ملایم (پیش‌فرض)؛ شب با .dark پررنگ */
+.dark .login3d-grid {
+  background-image:
+    linear-gradient(oklch(0.8 0.12 172 / 40%) 1.5px, transparent 1.5px),
+    linear-gradient(
+      90deg,
+      oklch(0.75 0.12 300 / 32%) 1.5px,
+      transparent 1.5px
+    );
+}
+
+/* هاله‌های شنارور — عمق رنگی پشت کارت */
+.login3d-orbs {
+  position: absolute;
+  inset: 0;
+}
+.login3d-orbs > i {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(46px);
+}
+.login3d-orbs > i:nth-child(1) {
+  top: 6%;
+  right: 8%;
+  width: 300px;
+  height: 300px;
+  background: oklch(0.6 0.14 172 / 30%);
+  animation: login3d-orb-a 13s ease-in-out infinite alternate;
+}
+.login3d-orbs > i:nth-child(2) {
+  bottom: 12%;
+  left: 6%;
+  width: 340px;
+  height: 340px;
+  background: oklch(0.55 0.16 300 / 28%);
+  animation: login3d-orb-b 16s ease-in-out infinite alternate;
+}
+.login3d-orbs > i:nth-child(3) {
+  top: 34%;
+  left: 40%;
+  width: 220px;
+  height: 220px;
+  background: oklch(0.7 0.13 85 / 22%);
+  animation: login3d-orb-a 19s ease-in-out infinite alternate-reverse;
+}
+.login3d-orbs > i:nth-child(4) {
+  bottom: 30%;
+  right: 30%;
+  width: 180px;
+  height: 180px;
+  background: oklch(0.65 0.13 200 / 24%);
+  animation: login3d-orb-b 12s ease-in-out infinite alternate-reverse;
+}
+@keyframes login3d-orb-a {
+  from {
+    translate: 0 0;
+    scale: 1;
+  }
+  to {
+    translate: -60px 40px;
+    scale: 1.15;
+  }
+}
+@keyframes login3d-orb-b {
+  from {
+    translate: 0 0;
+    scale: 1.1;
+  }
+  to {
+    translate: 70px -50px;
+    scale: 0.95;
+  }
+}
+
+/* مکعبهای شنارور — چهره‌های گرادیانی با چرخش واقعی سه‌بعدی */
+.login3d-cubes {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+.login3d-cube {
+  position: absolute;
+  width: 54px;
+  height: 54px;
+  transform-style: preserve-3d;
+  animation: login3d-cube-spin 9s linear infinite;
+}
+.login3d-cube > i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid oklch(0.9 0.08 172 / 45%);
+  background: linear-gradient(
+    135deg,
+    oklch(0.6 0.13 172 / 34%),
+    oklch(0.55 0.15 300 / 30%)
+  );
+  box-shadow: inset 0 0 14px oklch(0.85 0.1 172 / 22%);
+  backface-visibility: visible;
+}
+.login3d-cube > i:nth-child(1) {
+  transform: rotateY(0deg) translateZ(27px);
+}
+.login3d-cube > i:nth-child(2) {
+  transform: rotateY(90deg) translateZ(27px);
+}
+.login3d-cube > i:nth-child(3) {
+  transform: rotateY(180deg) translateZ(27px);
+}
+.login3d-cube > i:nth-child(4) {
+  transform: rotateY(270deg) translateZ(27px);
+}
+.login3d-cube > i:nth-child(5) {
+  transform: rotateX(90deg) translateZ(27px);
+}
+.login3d-cube > i:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(27px);
+}
+.login3d-cube.cube-a {
+  top: 16%;
+  left: 12%;
+  animation-duration: 11s;
+}
+.login3d-cube.cube-b {
+  top: 62%;
+  right: 10%;
+  width: 40px;
+  height: 40px;
+  animation-direction: reverse;
+  animation-duration: 13s;
+}
+.login3d-cube.cube-b > i {
+  transform: none;
+}
+.login3d-cube.cube-b > i:nth-child(1) {
+  transform: rotateY(0deg) translateZ(20px);
+}
+.login3d-cube.cube-b > i:nth-child(2) {
+  transform: rotateY(90deg) translateZ(20px);
+}
+.login3d-cube.cube-b > i:nth-child(3) {
+  transform: rotateY(180deg) translateZ(20px);
+}
+.login3d-cube.cube-b > i:nth-child(4) {
+  transform: rotateY(270deg) translateZ(20px);
+}
+.login3d-cube.cube-b > i:nth-child(5) {
+  transform: rotateX(90deg) translateZ(20px);
+}
+.login3d-cube.cube-b > i:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(20px);
+}
+.login3d-cube.cube-c {
+  top: 38%;
+  right: 22%;
+  width: 26px;
+  height: 26px;
+  opacity: 0.8;
+  animation-duration: 7.5s;
+}
+.login3d-cube.cube-c > i:nth-child(1) {
+  transform: rotateY(0deg) translateZ(13px);
+}
+.login3d-cube.cube-c > i:nth-child(2) {
+  transform: rotateY(90deg) translateZ(13px);
+}
+.login3d-cube.cube-c > i:nth-child(3) {
+  transform: rotateY(180deg) translateZ(13px);
+}
+.login3d-cube.cube-c > i:nth-child(4) {
+  transform: rotateY(270deg) translateZ(13px);
+}
+.login3d-cube.cube-c > i:nth-child(5) {
+  transform: rotateX(90deg) translateZ(13px);
+}
+.login3d-cube.cube-c > i:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(13px);
+}
+@keyframes login3d-cube-spin {
+  from {
+    transform: rotateX(-18deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(-18deg) rotateY(360deg);
+  }
+}
+
+/* ذرات فیلمی — غبار نورانی شناور رو به بالا */
+.login3d-dust {
+  position: absolute;
+  inset: 0;
+}
+.login3d-dust > i {
+  position: absolute;
+  bottom: -8px;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: oklch(0.95 0.06 172 / 70%);
+  box-shadow: 0 0 8px 1px oklch(0.85 0.1 172 / 60%);
+  animation: login3d-dust-rise 9s linear infinite;
+}
+.login3d-dust > i:nth-child(1) {
+  right: 8%;
+  animation-duration: 8s;
+  animation-delay: 0s;
+}
+.login3d-dust > i:nth-child(2) {
+  right: 22%;
+  width: 3px;
+  height: 3px;
+  animation-duration: 11s;
+  animation-delay: 1.2s;
+}
+.login3d-dust > i:nth-child(3) {
+  right: 41%;
+  animation-duration: 9.5s;
+  animation-delay: 2.4s;
+}
+.login3d-dust > i:nth-child(4) {
+  right: 58%;
+  width: 5px;
+  height: 5px;
+  animation-duration: 12s;
+  animation-delay: 0.8s;
+}
+.login3d-dust > i:nth-child(5) {
+  right: 71%;
+  width: 3px;
+  height: 3px;
+  animation-duration: 10s;
+  animation-delay: 3.1s;
+}
+.login3d-dust > i:nth-child(6) {
+  right: 85%;
+  animation-duration: 8.6s;
+  animation-delay: 1.9s;
+}
+@keyframes login3d-dust-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-88vh) translateX(-24px);
+    opacity: 0;
+  }
+}
+
+/* گِرِین فیلم + وینیت — حس دوربین سینمایی */
+.login3d-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.7'/%3E%3C/svg%3E");
+  animation: login3d-grain-jitter 0.9s steps(4) infinite;
+}
+@keyframes login3d-grain-jitter {
+  0% {
+    translate: 0 0;
+  }
+  25% {
+    translate: -6px 4px;
+  }
+  50% {
+    translate: 5px -5px;
+  }
+  75% {
+    translate: -4px -6px;
+  }
+  100% {
+    translate: 6px 5px;
+  }
+}
+.login3d-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    115% 115% at 50% 45%,
+    transparent 58%,
+    oklch(0.45 0.05 240 / 22%) 100%
+  );
+}
+.dark .login3d-vignette {
+  background: radial-gradient(
+    115% 115% at 50% 45%,
+    transparent 55%,
+    oklch(0.12 0.03 260 / 42%) 100%
+  );
+}
+
+/* کارت لاگین — شیشه‌ی سینمایی با قاب گرادیانی و عمق واقعی */
+.login3d-card {
+  border: 1px solid transparent;
+  background:
+    linear-gradient(to bottom, oklch(1 0 0 / 92%), oklch(0.98 0.006 172 / 88%))
+      padding-box,
+    linear-gradient(
+      135deg,
+      oklch(0.85 0.09 85 / 55%),
+      oklch(0.72 0.14 175 / 60%),
+      oklch(0.65 0.19 300 / 55%)
+    ) border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 60%),
+    0 30px 70px -28px oklch(0.12 0.04 260 / 55%),
+    0 16px 50px -24px oklch(0.72 0.14 175 / 35%),
+    0 8px 30px -18px oklch(0.55 0.16 300 / 30%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+.dark .login3d-card {
+  background:
+    linear-gradient(
+      to bottom,
+      oklch(0.26 0.03 250 / 88%),
+      oklch(0.21 0.03 250 / 84%)
+    )
+    padding-box,
+    linear-gradient(
+      135deg,
+      oklch(0.8 0.1 85 / 50%),
+      oklch(0.75 0.14 175 / 55%),
+      oklch(0.68 0.18 300 / 50%)
+    ) border-box;
+  box-shadow:
+    inset 0 1px 0 rgb(255 255 255 / 10%),
+    0 34px 80px -30px rgb(0 0 0 / 80%),
+    0 16px 50px -24px oklch(0.72 0.14 175 / 30%),
+    0 8px 30px -18px oklch(0.65 0.16 300 / 25%);
+}
+
+/* تیتر Lalezar — روز: تیره با اکسترود فیروزه‌ای؛ شب: روشن با هاله */
+.login3d-title {
+  font-family: "Lalezar", "Vazirmatn", ui-sans-serif, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: oklch(0.32 0.06 200);
+  text-shadow:
+    0 1px 0 oklch(0.85 0.07 172),
+    0 2px 0 oklch(0.8 0.08 172),
+    0 3px 0 oklch(0.74 0.09 172),
+    0 4px 0 oklch(0.68 0.1 172),
+    0 5px 0 oklch(0.6 0.11 172),
+    0 7px 14px oklch(0.35 0.06 200 / 40%),
+    0 0 26px oklch(0.72 0.14 175 / 40%);
+  animation: login3d-title-glow 3.4s ease-in-out infinite;
+}
+.dark .login3d-title {
+  color: oklch(0.98 0.01 160);
+  text-shadow:
+    0 1px 0 oklch(0.5 0.12 172),
+    0 2px 0 oklch(0.45 0.11 172),
+    0 3px 0 oklch(0.4 0.1 172),
+    0 4px 0 oklch(0.35 0.09 172),
+    0 5px 0 oklch(0.3 0.08 172),
+    0 7px 14px oklch(0.2 0.05 240 / 65%),
+    0 0 26px oklch(0.72 0.14 175 / 55%);
+}
+@keyframes login3d-title-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px oklch(0.72 0.14 175 / 25%));
+  }
+  50% {
+    filter: drop-shadow(0 0 18px oklch(0.72 0.14 175 / 55%));
+  }
+}
+/* زیرتیتر و دکمه‌ها هم با Lalezar */
+.login3d-display {
+  font-family: "Lalezar", "Vazirmatn", ui-sans-serif, sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.3px;
+}
+
+/* لوگوی بالای فرم — شناوری آرام با هاله */
+.login3d-float {
+  animation:
+    login3d-logo-bob 4.5s ease-in-out infinite,
+    login3d-title-glow 3.4s ease-in-out infinite;
+}
+@keyframes login3d-logo-bob {
+  0%,
+  100% {
+    translate: 0 0;
+    rotate: 0deg;
+  }
+  50% {
+    translate: 0 -7px;
+    rotate: 2deg;
+  }
+}
+
+/* =====================================================================
+   تسک ۵۶ — بخش ۴: لودینگ فوق‌العاده سه‌بعدی — اورلی تمام‌صفحه حین ورود
+   حلقه‌های مداری + مکعب چرخان + نوار پیشرفت براق — همه با CSS
+   ===================================================================== */
+.login3d-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: oklch(0.14 0.04 250 / 78%);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  transition: opacity 0.35s ease;
+}
+.login3d-loader.login3d-loader-off {
+  opacity: 0;
+  pointer-events: none;
+}
+.login3d-loader-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  text-align: center;
+}
+
+/* صحنه‌ی مداری — سه حلقه با محورهای مختلف دور مکعب */
+.login3d-orbit {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  transform-style: preserve-3d;
+  animation: login3d-orbit-tilt 6s ease-in-out infinite;
+}
+@keyframes login3d-orbit-tilt {
+  0%,
+  100% {
+    transform: perspective(700px) rotateX(62deg) rotateZ(0deg);
+  }
+  50% {
+    transform: perspective(700px) rotateX(58deg) rotateZ(12deg);
+  }
+}
+.login3d-orbit > i {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  border: 2px solid transparent;
+}
+.login3d-orbit > i:nth-child(1) {
+  border-top-color: oklch(0.85 0.12 172 / 95%);
+  border-right-color: oklch(0.72 0.14 175 / 35%);
+  animation: login3d-orbit-spin 1.6s linear infinite;
+  filter: drop-shadow(0 0 10px oklch(0.72 0.14 175 / 60%));
+}
+.login3d-orbit > i:nth-child(2) {
+  inset: 16px;
+  border-bottom-color: oklch(0.8 0.1 300 / 90%);
+  border-left-color: oklch(0.65 0.16 300 / 30%);
+  animation: login3d-orbit-spin 2.3s linear infinite reverse;
+  filter: drop-shadow(0 0 10px oklch(0.65 0.16 300 / 55%));
+}
+.login3d-orbit > i:nth-child(3) {
+  inset: 32px;
+  border-top-color: oklch(0.9 0.11 85 / 85%);
+  border-right-color: oklch(0.8 0.1 85 / 25%);
+  animation: login3d-orbit-spin 1.1s linear infinite;
+  filter: drop-shadow(0 0 8px oklch(0.8 0.11 85 / 55%));
+}
+@keyframes login3d-orbit-spin {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+/* مکعب مرکزی چرخان — شش وجه گرادیانی */
+.login3d-cube3d {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  transform-style: preserve-3d;
+  animation: login3d-loader-cube 2.8s linear infinite;
+}
+.login3d-cube3d > i {
+  position: absolute;
+  inset: 0;
+  border: 1px solid oklch(0.95 0.05 160 / 50%);
+  background: linear-gradient(
+    135deg,
+    oklch(0.72 0.14 175 / 92%),
+    oklch(0.58 0.13 300 / 88%)
+  );
+  box-shadow: inset 0 0 12px rgb(255 255 255 / 30%);
+}
+.login3d-cube3d > i:nth-child(1) {
+  transform: rotateY(0deg) translateZ(23px);
+}
+.login3d-cube3d > i:nth-child(2) {
+  transform: rotateY(90deg) translateZ(23px);
+}
+.login3d-cube3d > i:nth-child(3) {
+  transform: rotateY(180deg) translateZ(23px);
+}
+.login3d-cube3d > i:nth-child(4) {
+  transform: rotateY(270deg) translateZ(23px);
+}
+.login3d-cube3d > i:nth-child(5) {
+  transform: rotateX(90deg) translateZ(23px);
+}
+.login3d-cube3d > i:nth-child(6) {
+  transform: rotateX(-90deg) translateZ(23px);
+}
+@keyframes login3d-loader-cube {
+  from {
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  to {
+    transform: rotateX(360deg) rotateY(720deg);
+  }
+}
+
+/* متن لودینگ با Lalezar */
+.login3d-loader-title {
+  font-size: 30px;
+  color: oklch(0.97 0.01 160);
+  text-shadow:
+    0 2px 0 oklch(0.5 0.12 172 / 80%),
+    0 4px 0 oklch(0.4 0.1 172 / 70%),
+    0 8px 20px oklch(0.2 0.05 240 / 70%),
+    0 0 30px oklch(0.72 0.14 175 / 60%);
+  animation: login3d-title-glow 2.2s ease-in-out infinite;
+}
+.login3d-loader-sub {
+  margin-top: -6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: oklch(0.85 0.03 172 / 80%);
+}
+
+/* نوار پیشرفت نامعین — موج براق جاری */
+.login3d-bar {
+  position: relative;
+  width: 240px;
+  height: 8px;
+  margin-top: 8px;
+  border-radius: 9999px;
+  overflow: hidden;
+  background: oklch(1 0 0 / 12%);
+  box-shadow:
+    inset 0 1px 3px oklch(0 0 0 / 45%),
+    0 0 14px -4px oklch(0.72 0.14 175 / 50%);
+}
+.login3d-bar > i {
+  position: absolute;
+  inset-block: 0;
+  right: -45%;
+  width: 45%;
+  border-radius: 9999px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    oklch(0.72 0.14 175 / 90%),
+    oklch(0.8 0.13 85 / 90%),
+    oklch(0.7 0.15 300 / 90%),
+    transparent
+  );
+  animation: login3d-bar-run 1.5s ease-in-out infinite;
+}
+@keyframes login3d-bar-run {
+  from {
+    right: -45%;
+  }
+  to {
+    right: 105%;
+  }
+}
+
+/* حذف حرکت برای کاربران حساس به انیمیشن — همه‌ی بخش‌های تسک ۵۶ */
+@media (prefers-reduced-motion: reduce) {
+  .login3d-sky,
+  .login3d-beams > i,
+  .login3d-grid,
+  .login3d-orbs > i,
+  .login3d-cube,
+  .login3d-dust > i,
+  .login3d-grain,
+  .login3d-title,
+  .login3d-float,
+  .login3d-orbit,
+  .login3d-orbit > i,
+  .login3d-cube3d,
+  .login3d-bar > i,
+  [data-slot="dropdown-menu-content"][data-state="open"],
+  [data-slot="popover-content"][data-state="open"],
+  [data-slot="tooltip-content"][data-state="delayed-open"],
+  [data-slot="tooltip-content"][data-state="instant-open"] {
+    animation: none !important;
+  }
+  [data-slot="badge"],
+  [data-slot="tabs-trigger"],
+  [data-slot="checkbox"],
+  .nav3d-btn {
+    transition: none !important;
+  }
+  [data-slot="badge"]:hover,
+  [data-slot="tabs-trigger"]:hover,
+  [data-slot="tabs-trigger"]:active,
+  [data-slot="checkbox"]:hover {
+    translate: none !important;
+  }
+}
